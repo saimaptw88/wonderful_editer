@@ -17,9 +17,12 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: root
+  host: 127.0.0.1
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
@@ -81,5 +84,5 @@ test:
 production:
   <<: *default
   database: wonderful_editer_production
-  username: wonderful_editer
+  # username: wonderful_editer
   password: <%= ENV['WONDERFUL_EDITER_DATABASE_PASSWORD'] %>
